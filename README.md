@@ -8,3 +8,6 @@ This is main goal - merge 3 funcitonality into one app that i will use for my ed
 [Desing File in Figma](https://www.figma.com/file/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?type=design&mode=design&t=9vlll7lhA7RBiyTs-1)
 
 - slow, but I will succeed (: -
+Progress:
+  - Created Habit Tracker Component [o]
+  - 
