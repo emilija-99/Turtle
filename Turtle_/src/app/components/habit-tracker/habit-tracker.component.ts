@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Renderer2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { habit_tracker_object } from '../../../assets/models';
 
 @Component({
   selector: 'app-habit-tracker',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './habit-tracker.component.html',
   styleUrl: './habit-tracker.component.css'
 })
-export class HabitTrackerComponent implements OnInit{
+export class HabitTrackerComponent implements OnInit,OnChanges{
   
+  @Input() habit_name: any;
   private date: Date = new Date();
   private days?: any;
   private habitTrackerList:any[]=[];
@@ -30,18 +31,29 @@ export class HabitTrackerComponent implements OnInit{
     Dec: 31
   };
 
+//  public visibleElement:boolean = false;
+
   constructor(
     private renderer: Renderer2
   ){
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("Changes:", changes);
+    if(changes['habit_name'].currentValue){
+      this.setDaysForMonth();
+     // this.createCanvas(this.days);
+     // this.visibleElement = true;
+    }else{
+    //  this.visibleElement = false;
+    }
+  }
   ngOnInit(): void {
-    console.log("Date",this.date);  
-    // this.createCanvas(this.days);
-  
+   
   }
 
   ngAfterViewInit(){
-    this.setDaysForMonth();
+   
    
   }
 

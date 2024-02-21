@@ -1,1 +1,6 @@
-<app-habit-tracker></app-habit-tracker>
+<div class="inputName">
+    <input type="text" [(ngModel)]="habitName" placeholder="Place a name of new habit"/>
+    <button (click)="addNewHabit(habitName)">Add new habit</button>
+</div>
+<app-habit-tracker
+[habit_name]="habit_name"></app-habit-tracker>
