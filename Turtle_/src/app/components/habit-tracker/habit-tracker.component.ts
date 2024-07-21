@@ -1,29 +1,26 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Renderer2 } from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { habit_tracker_object } from '../../../assets/models';
+import { Component, Input, model, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { habit_tracker_object, matrixObj } from '../../../assets/models';
 
 @Component({
   selector: 'app-habit-tracker',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './habit-tracker.component.html',
-  styleUrl: './habit-tracker.component.css'
+  styleUrls: ['./habit-tracker.component.css'],
+  standalone:true
 })
-export class HabitTrackerComponent implements OnInit,OnChanges{
-  
-  @Input() habit_name: any;
+export class HabitTrackerComponent implements OnInit, OnChanges {
+  @Input({required:true}) habit_id!: number;
+  @Input({required:true}) habit_name!: string; 
   private date: Date = new Date();
   private days?: any;
-  private habitTrackerList:any[]=[];
-  private months :{}={
+  private habitTrackerList: any[] = [];
+  private months: {} = {
     Jan: 31,
-    Feb:28,
-    Marth:31,
-    April:30,
+    Feb: 28,
+    Marth: 31,
+    April: 30,
     May: 31,
-    Jun:30,
-    July:31,
+    Jun: 30,
+    July: 31,
     Avg: 31,
     Sept: 30,
     Okt: 31,
@@ -31,120 +28,111 @@ export class HabitTrackerComponent implements OnInit,OnChanges{
     Dec: 31
   };
 
-//  public visibleElement:boolean = false;
 
-  constructor(
-    private renderer: Renderer2
-  ){
-  }
+  constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("Changes:", changes);
-    if(changes['habit_name'].currentValue){
+    if (changes['habit_id'].currentValue) {
       this.setDaysForMonth();
-     // this.createCanvas(this.days);
-     // this.visibleElement = true;
-    }else{
-    //  this.visibleElement = false;
+     
     }
   }
+
   ngOnInit(): void {
-   
-  }
-
-  ngAfterViewInit(){
-   
-   
-  }
-
-  setDate():void{
-    this.date = new Date();
-  }
-
-  getDate():Date{
-    return this.date;
-  }
-
-  setDaysForMonth():void{
-    console.log(this.date.getMonth());
-    var current_month = this.date.getMonth() 
-    this.days = Object.entries(this.months)[current_month];
-    this.createCanvas(this.days)
-  }
-
-  setHabitTrackerMatrix(columns: any, rows: any): habit_tracker_object[][] {
-  const habitTracker: habit_tracker_object[][] = [];
-
-  for (let i = 0; i < columns; i++) {
-    habitTracker[i] = [];
-
-    for (let j = 0; j < rows; j++) {
-      habitTracker[i][j] = { id:1,checked: false }; // Initialize each element as an object
+    console.log("init.")
+    if (this.habit_id) {
+      this.setDaysForMonth();
     }
   }
 
-  return habitTracker;
+  setDaysForMonth(): void {
+    var current_month = this.date.getMonth();
+    this.days = Object.entries(this.months)[current_month];
+    console.log("days:", this.days);
+    this.createCanvas(this.habit_name, this.habit_id); // Dodajte habit_id kao argument
+  }
+
+  createCanvas(habit_name:string, habitId: number) { 
+    console.log("days,", habit_name, habitId);
+    if (typeof document !== 'undefined') {
+      
+      console.log("createCanvas if");
+      let daysGrid = document.getElementById(`days-${habitId}`) as HTMLElement; 
+      console.log(daysGrid);
+      if (!daysGrid) {
+        // If it doesn't exist, create it
+        daysGrid = document.createElement('div');
+        daysGrid.id = `days-${habitId}`;
+        daysGrid.classList.add('days-grid');
+
+        let container = document.getElementById('container'); // Ensure this container exists in your HTML
+        container?.appendChild(daysGrid);
+       
+      }
+        var rows = (this.days[1] / 7);
+        var columns = 7;
+        console.log('rows, columns', rows, columns);
+        rows = Math.round(rows)+1;
+        let mat = this.setHabitTrackerMatrix(columns, rows);
+        console.log("mat", mat);
+        for (let i = 0; i < rows; i++) {
+          const rowContainer = document.createElement('div');
+          rowContainer.style.paddingLeft = '1px';
+          rowContainer.style.display = 'flex';
+
+          rowContainer.classList.add('row');
+  
+          for (let j = 0; j < columns; j++) {
+            const square = document.createElement('div');
+            square.style.backgroundColor = '#d2d2d2';
+            square.style.width = '10px';
+            square.style.height = '10px';
+            square.style.margin = '2px 1px';
+            square.style.borderRadius = '1.5px';
+            square.style.boxShadow = '-1px 4px 2px -3px rgba(0,0,0,0.63) inset';
+            square.classList.add('square');
+            rowContainer.appendChild(square);
+          }
+          daysGrid.appendChild(rowContainer);
+        }
+        this.habitTrackerList.push(mat);
+      }
 }
 
+  setHabitTrackerMatrix(columns: any, rows: any): habit_tracker_object {
+    console.log("column, rows", columns, rows);
 
-  setHabitObject(columns:any, rows:any, habit_tracker_object:habit_tracker_object[][]):habit_tracker_object[][]{
-    habit_tracker_object[columns][rows].checked = true;
-    return habit_tracker_object;
+    const habitTracker : habit_tracker_object = {
+      id: this.habit_id,
+      matrix: this.createMatrix(columns, rows)
+    }
+    console.log(">> Matrix: habit_tracker: ", habitTracker);
+   return habitTracker;
   }
-  createCanvas(days : any){
-    
-    if(typeof document !== 'undefined'){
-      console.log("not here (:")
-      document.addEventListener('DOMContentLoaded', ()=>{
-      const daysGrid = document.getElementById('days');
-       if(daysGrid){
-        var rows = (days[1]/7);
-        var columns = 7;
-        this.setHabitTrackerMatrix(columns, rows);
-        for(let i = 0; i < columns; i++){
-          var rowContainer = document.createElement('div');
-          rowContainer.style.paddingLeft = '1px';
-          rowContainer.classList.add('row');
+  createMatrix(columns: number, rows:number): matrixObj[][] {
+    const matrix: matrixObj[][] = [];
+    let counter = 0;
 
-          for(let j = 0; j < rows; j++){
-              const square = document.createElement('div');
-              // square.style.backgroundColor='#8AB753'; - checked.
-              square.style.backgroundColor='#d2d2d2'
-              square.style.width='6px';
-              square.style.height = '6px'
-              square.style.margin = '2px 1px'
-              square.style.borderRadius = '1.5px'
-              square.style.boxShadow = '-1px 4px 2px -3px rgba(0,0,0,0.63) inset'
-              square.classList.add('square');
-              
-              var habitTracker = this.setHabitTrackerMatrix(columns,rows);
-
-              square.addEventListener('click', (event) => {
-                const rowIndex = i;
-                const columnIndex = j;
-                
-                habitTracker[rowIndex][columnIndex].checked = !habitTracker[rowIndex][columnIndex].checked ;
-                if(habitTracker[rowIndex][columnIndex].checked == true){
-                  square.style.backgroundColor='#8AB753';
-                }else{
-                  square.style.backgroundColor='#d2d2d2'
-                }
-               console.warn(`Object at (${rowIndex}, ${columnIndex}) clicked. Checked status: ${habitTracker[i][j].checked}`);
-              
-              });
-
-              rowContainer.appendChild(square);
-              this.habitTrackerList.push(habitTracker);
-          }
-          daysGrid.appendChild(rowContainer)
+    for(let i = 0; i < rows; i++){
+      const row: matrixObj[] = [];
+      for(let j = 0; j < columns; j++){
+        if(counter <= 31){
+          row.push({
+            checked:false,
+            day: counter++
+          });
+        }else{
+          row.push({
+            checked:false,
+            day:-1,
+          });
         }
       }
-
-    })
+      matrix.push(row);
+    }
+    return matrix;
   }
 
-     
-  }
-
-
+  
 }

@@ -3,7 +3,13 @@ export interface year_month{
     Month: Number,
     Day: Number
 }
+
+export interface matrixObj{
+    checked: boolean;
+    day:number
+}
+
 export interface habit_tracker_object{
     id:Number,
-    checked:boolean
+    matrix: matrixObj[][];
 }
