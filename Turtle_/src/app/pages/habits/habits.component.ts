@@ -63,6 +63,7 @@ export class HabitsComponent implements OnInit, OnChanges{
       componentRef.instance.habit_id = newHabitObject.id;
       this.habitName = ''; 
       console.log("componentRed: ", componentRef);
+      // document.getElementById('habitTrackerContainer')?
     }else{
       console.log("we do not have this instance of component :).");
     }
