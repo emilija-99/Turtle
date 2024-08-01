@@ -1,4 +1,5 @@
 export class HabitObject{
-    id!: number
-    name!:string
+    habit_id!: number
+    habit_name!:string
+    creation_date!:string
 }

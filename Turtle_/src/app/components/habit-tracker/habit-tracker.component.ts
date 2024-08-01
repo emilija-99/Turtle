@@ -9,10 +9,12 @@ import { habit_tracker_object, matrixObj } from '../../../assets/models';
 })
 export class HabitTrackerComponent implements OnInit, OnChanges {
   @Input({required:true}) habit_id!: number;
-  @Input({required:true}) habit_name!: string; 
+  @Input({required:true}) habit_name!: string;
+  @Input({required:true}) creation_date!:string;
   private date: Date = new Date();
   private days?: any;
   private habitTrackerList: any[] = [];
+  
   private months: {} = {
     Jan: 31,
     Feb: 28,

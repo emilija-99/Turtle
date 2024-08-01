@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventEmitter } from 'node:stream';
 import { HabitObject } from './habit';
+import { HabitService } from './../../services/habit.service'
 
 @Component({
   selector: 'app-habits',
@@ -24,11 +25,13 @@ export class HabitsComponent implements OnInit, OnChanges{
   public visibleInput:boolean = true;
 
   constructor(
-    private resolver: ComponentFactoryResolver
+    private resolver: ComponentFactoryResolver,
+    private habitService: HabitService
   ){
     
   }
   ngOnInit(): void {
+    this.getAllHabits();
     console.log("Item.");
     this.inputChange();
   }
@@ -45,13 +48,22 @@ export class HabitsComponent implements OnInit, OnChanges{
     }
   }
 
+  getAllHabits(){
+    this.habitService.getAllHabits().subscribe({
+      next:(response)=>{
+        console.log("HabitService response: ", response);
+      }
+    })
+  }
+
 
   addNewHabit(habitName: string) {
     console.log("habitName reseved: ", habitName);
 
     var newHabitObject = new HabitObject();
-    newHabitObject.id = ++this.ID;
-    newHabitObject.name = habitName;
+    newHabitObject.habit_id = ++this.ID;
+    newHabitObject.habit_name = habitName;
+    newHabitObject.creation_date = new Date().toISOString();
 
     console.log("newHabitObject: ", newHabitObject);
 
@@ -59,8 +71,10 @@ export class HabitsComponent implements OnInit, OnChanges{
     if (habitName && this.habitTrackerContainer) { 
       const factory = this.resolver.resolveComponentFactory(HabitTrackerComponent);
       const componentRef = this.habitTrackerContainer.createComponent(factory);
-      componentRef.instance.habit_name = newHabitObject.name; 
-      componentRef.instance.habit_id = newHabitObject.id;
+      componentRef.instance.habit_name = newHabitObject.habit_name; 
+      componentRef.instance.habit_id = newHabitObject.habit_id;
+      componentRef.instance.creation_date = newHabitObject.creation_date.toString();
+
       this.habitName = ''; 
       console.log("componentRed: ", componentRef);
       // document.getElementById('habitTrackerContainer')?
