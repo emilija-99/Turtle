@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { EventEmitter } from 'node:stream';
 import { HabitObject } from './habit';
 import { HabitService } from './../../services/habit.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-habits',
   standalone: true,
-  imports: [HabitTrackerComponent, FormsModule,CommonModule],
+  imports: [HttpClientModule, HabitTrackerComponent, FormsModule, CommonModule],
   templateUrl: './habits.component.html',
   styleUrl: './habits.component.css'
 })
@@ -23,6 +24,7 @@ export class HabitsComponent implements OnInit, OnChanges{
   
   public habitName:any;
   public visibleInput:boolean = true;
+  private habits_tracker_obj:HabitObject[] = [];
 
   constructor(
     private resolver: ComponentFactoryResolver,
@@ -52,6 +54,14 @@ export class HabitsComponent implements OnInit, OnChanges{
     this.habitService.getAllHabits().subscribe({
       next:(response)=>{
         console.log("HabitService response: ", response);
+        if(response)
+          this.habits_tracker_obj = response;
+      },
+      complete:()=>{
+
+      },
+      error:(error)=>{
+        console.error("getAllHabits error response: ",error);
       }
     })
   }

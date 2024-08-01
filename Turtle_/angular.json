@@ -25,7 +25,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@anywhere-ui/core/dist/anywhere-ui/anywhere-ui.css"
+            
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -89,7 +89,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@anywhere-ui/core/dist/anywhere-ui/anywhere-ui.css"
+              
             ],
             "scripts": []
           }

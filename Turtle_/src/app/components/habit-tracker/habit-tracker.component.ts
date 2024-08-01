@@ -1,8 +1,10 @@
 import { Component, Input, model, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { habit_tracker_object, matrixObj } from '../../../assets/models';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-habit-tracker',
+  imports:[HttpClientModule],
   templateUrl: './habit-tracker.component.html',
   styleUrls: ['./habit-tracker.component.css'],
   standalone:true
