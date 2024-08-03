@@ -7,16 +7,20 @@ import { title } from '../assets/global_cases';
 
 
 import {HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from "./pages/home/home.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     HttpClientModule,
+    CommonModule,
     RouterOutlet,
     HeaderComponent,
     HabitsComponent,
-    HabitTrackerComponent
+    HabitTrackerComponent,
+    HomeComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], 
