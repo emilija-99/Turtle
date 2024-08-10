@@ -1,82 +1,40 @@
-.progress-bar-basic{
-    height: 20px;
-    border-radius: 8px;
-    transition: width 0.3s ease;
-}
-
-/* liner-style-blue */
-input[type="range" i] {
-    background: linear-gradient(180deg, #5EE6FA 36%, #388894 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-20{
-    background: linear-gradient(180deg, #5EE6FA 36%, #388894 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-40{
-    background: linear-gradient(180deg, #66FBDB 36%, #3D9582 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-50{
-    background: linear-gradient(180deg, #FEAE7C 36%, #98684A 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-60{
-    background: linear-gradient(180deg, #FF9886 36%, #995B50 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-70{
-    background: linear-gradient(180deg, #FF7F9C 36%, #994C5E 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-80{
-    background: linear-gradient(180deg, #CB90FC 36%, #795696 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-}
-.progress-blue-100{
-    background: linear-gradient(180deg, #9191FF 36%, #575799 100%);
-    border: 1px solid #000000;
-    backdrop-filter: blur(2px);
-} 
-input {
-    height: 12px;
-    border-radius: 8px;
-}
-input[type="range"] {
-    -webkit-appearance: none;  /* Override default appearance */
-    width: 100%; /* Specific width can be adjusted */
-    height: 8px; /* Slider track height */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Partial transparency */
-    transition: opacity .2s; /* Smooth transition for hover effects */
+#range_input {
+  border-radius: 8px;
+  height: 11px;
+  width: 356px;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+  cursor: pointer;
+  animate: 0.2s;
+  border: 0px solid #000000;
   }
-  
-  /* Slider thumb */
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default appearance */
-    appearance: none;
-    width: 20px; /* Width of the thumb */
-    height: 20px; /* Height of the thumb */
-    background: #4CAF50; /* Thumb color */
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 50%; /* Make the thumb round */
+  input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0.75px 0.75px 0.75px #000000;
+    border: 0.5px solid #000000;
+    height: 15px;
+    width: 12px;
+    border-radius: 3px;
+    background: #FFFFFF;
+    cursor: pointer;
   }
-  
-  input[type="range"]::-moz-range-thumb {
-    width: 20px; /* Width of the thumb */
-    height: 20px; /* Height of the thumb */
-    background: #4CAF50; /* Thumb color */
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 50%; /* Make the thumb round */
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 0.75px 0.75px 0.75px #000000;
+    border: 0.5px solid #07010100;
+    height: 15px;
+    width: 12px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    cursor: pointer;
   }
-  input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" i]) {
-    border-radius: 2px;
-    background-color: red;
-  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0.75px 0.75px 0.75px #000000;
+  border: 0.5px solid #000000;
+  height: 15px;
+  width: 12px;
+  border-radius: 3px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -2px;
+}

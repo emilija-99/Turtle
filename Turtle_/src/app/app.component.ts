@@ -5,7 +5,6 @@ import { HabitsComponent } from './pages/habits/habits.component';
 import { HabitTrackerComponent } from './components/habit-tracker/habit-tracker.component';
 import { title } from '../assets/global_cases'; 
 
-
 import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from "./pages/home/home.component";
 import { CommonModule } from '@angular/common';

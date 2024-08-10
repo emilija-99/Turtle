@@ -3,22 +3,8 @@
     aria - provide infomration about element
     states - current condition of UI component
 -->
-    <input type="range" min="0" max="100"  
+    <input type="range" min="0" max="100" id="range_input"
     [(ngModel)]="this.current_progress" 
-    (change)="updateProgress(this.current_progress)"
-    [ngClass]="{'progress-blue': current_progress < 20}"
+    (input)="updateProgress(this.current_progress)"
     />
-<!-- <div 
-    role="progressbar" 
-    [attr.aria-valuenow]="this.current_progress"
-    aria-valuemax="100" 
-    aria-valuemin="0"
-    [style.width]="this.current_progress+'%'"
-    [ngClass]="{
-        'progress-bar-basic': true,  
-        'progress-blue-20': this.current_progress < 20 && this.current_style_progress_bar === 'blue',
-        'progress-blue-50': this.current_progress >= 20 && this.current_progress < 50 && current_style_progress_bar === 'blue',
-        'progress-blue-80': this.current_progress >= 50 && this.current_progress < 80 && current_style_progress_bar === 'blue',
-        'progress-blue-100': this.current_progress >= 80 && this.current_style_progress_bar === 'blue'
-    }">
-</div> -->
+
