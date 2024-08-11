@@ -21,3 +21,35 @@
 .days-grid{
     display: block;
 }
+.days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .square {
+    width: 20px;
+    height: 20px;
+    background-color: #d2d2d2;
+    border-radius: 3px;
+    box-shadow: inset -1px 4px 2px -3px rgba(0, 0, 0, 0.63);
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .square:hover {
+    background-color: #b0b0b0;
+  }
+  
+  .square:active {
+    background-color: #8c8c8c;
+  }
+  

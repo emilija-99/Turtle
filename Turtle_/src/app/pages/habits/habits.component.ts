@@ -83,7 +83,7 @@ export class HabitsComponent implements OnInit, OnChanges{
       const componentRef = this.habitTrackerContainer.createComponent(factory);
       componentRef.instance.habit_name = newHabitObject.habit_name; 
       componentRef.instance.habit_id = newHabitObject.habit_id;
-      componentRef.instance.creation_date = newHabitObject.creation_date.toString();
+      // componentRef.instance.creation_date = newHabitObject.creation_date.toString();
 
       this.habitName = ''; 
       console.log("componentRed: ", componentRef);

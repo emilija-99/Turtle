@@ -5,10 +5,11 @@ import { ViewEncapsulation } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { ThemeService } from '../../services/theme.service';
 import { PomodoroTimerComponent } from "../../components/pomodoro-timer/pomodoro-timer.component";
+import { HabitTrackerComponent } from "../../components/habit-tracker/habit-tracker.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent],
+  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent, HabitTrackerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   encapsulation: ViewEncapsulation.None

@@ -4,6 +4,17 @@
         <div class="days" id="days">
           <span>{{habit_name}} {{habit_id}}</span>
         </div>
+        <div class="days-grid">
+          @for(row of matrix.matrix; track row){
+          <div class="row">
+            @for(cell of row; track cell){
+            <div class="square">
+              {{ cell.day !== -1 ? cell.day : '' }}
+            </div>
+          }
+          </div>
+        }
+        </div>
       </div>
     </div>
   </div>
