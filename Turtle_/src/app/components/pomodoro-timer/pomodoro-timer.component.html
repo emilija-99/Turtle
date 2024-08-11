@@ -1,1 +1,17 @@
-<p>pomodoro-timer works!</p>
+<div class="pomodoro" id="pomodoro">
+    <div class="timer">
+      <div class="btn-clock">
+        <button (click)="resetTimer()">Reset</button>
+        <button (click)="startTimer(this.timeSettings.pomodoro25)">Start</button>
+      </div>
+      <div class="clock">
+        <div class="clock-time">{{minutes}}</div>
+        <span>:</span>
+        @if(this.seconds == 0){
+            <div class="clock-time">00</div>
+        }@else{
+            <div class="clock-time">{{seconds}}</div>
+        }
+      </div>
+    </div>
+  </div>

@@ -12,7 +12,7 @@ info(msg: string, response: string): void {
 warn(msg: string): void {
     this.logWith(this.logLevel.Warn, msg);
   }
-error(msg: string): void {
+error(msg: string, error: any): void {
     this.logWith(this.logLevel.Error, msg);
   }
 private logWith(level: any, msg: string): void {

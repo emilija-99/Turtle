@@ -19,7 +19,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     HabitsComponent,
     HabitTrackerComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], 
