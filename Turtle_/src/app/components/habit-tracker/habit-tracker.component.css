@@ -5,6 +5,7 @@
 .days{
     display: flex;
     flex-direction: row;
+    font-size: 16px;
 
 }
 .gridcontainer{
@@ -46,10 +47,10 @@
   }
   
   .square:hover {
-    background-color: #b0b0b0;
+    background-color: #7CB841;
   }
   
   .square:active {
-    background-color: #8c8c8c;
+    background-color: #7CB841;
   }
   

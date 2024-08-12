@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-goal',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './goal.component.css'
 })
 export class GoalComponent {
-
+  @Input({required:true}) habit_name: string | undefined;
 }

@@ -9,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class NoteComponent {
 
+  public note:any;
+
+  noteChange($event: any){
+    console.log("event: ",$event);
+  }
+
+  resizeNote($event: any){
+    console.log("resize: ", $event);
+  }
+
+
 }

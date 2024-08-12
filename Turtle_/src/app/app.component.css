@@ -1,9 +1,8 @@
-*{
-    font-family: 'Times New Roman', Times, serif;
+@font-face {
+  font-family: 'Jost-regular';
+  src: url(/assets/Jost-VariableFont_wght.ttf);
 }
-app-header {
-    
-  }
+
   
   app-header  {
     max-width: 1200px; /* Adjust as needed */

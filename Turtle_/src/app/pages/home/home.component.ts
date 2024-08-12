@@ -6,10 +6,12 @@ import { HeaderComponent } from "../../components/header/header.component";
 import { ThemeService } from '../../services/theme.service';
 import { PomodoroTimerComponent } from "../../components/pomodoro-timer/pomodoro-timer.component";
 import { HabitTrackerComponent } from "../../components/habit-tracker/habit-tracker.component";
+import { GoalComponent } from "../../components/goal/goal.component";
+import { NoteComponent } from '../../components/note/note.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent, HabitTrackerComponent],
+  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent, HabitTrackerComponent, GoalComponent, NoteComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   encapsulation: ViewEncapsulation.None
