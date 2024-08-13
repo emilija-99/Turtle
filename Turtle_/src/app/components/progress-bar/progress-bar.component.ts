@@ -35,12 +35,18 @@ export class ProgressBarComponent implements OnInit, AfterViewChecked{
   public progressClass = 'progress-blue'
   public current_style_progress_bar?:string;
   private styleSubscribtion: Subscription;
+  private emojiSubscription: Subscription;
+  public emojiSettings = false;
 
   constructor(private themeService: ThemeService,
     @Inject(PLATFORM_ID) private platformID:Object,
     private logger: LoggerService,
     
   ){
+
+/*
+                --- themeOfProgressBarSettings
+*/
     this.styleSubscribtion = this.themeService.currentStyle.subscribe({
       next:(response)=>{
         if(response == 'mono'){
@@ -68,6 +74,16 @@ export class ProgressBarComponent implements OnInit, AfterViewChecked{
       },
       complete:()=>{
       }
+    });
+
+/*
+                --- emojiSettings
+*/
+    this.emojiSubscription = this.themeService.emoji_progress_bar.subscribe({
+      next:(reponse)=>{this.emojiSettings = reponse;},
+      complete:()=>{this.logger.info('your emoji setting is changed!',"");},
+      error:(err)=>{this.logger.error("error: emojiSettings",err)}
+
     })
   }
   ngAfterViewChecked(): void {

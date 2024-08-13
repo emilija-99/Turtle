@@ -8,20 +8,24 @@
         [(ngModel)]="this.current_progress" 
         (input)="updateProgress(this.current_progress)"
         />
-        @if(this.current_progress < 20){
-            <span>🐣</span>
-        }
-        @if(this.current_progress >= 20 && this.current_progress < 40){
-            <span>🐒</span>
-        } 
-        @if(this.current_progress >= 40 && this.current_progress < 60){ 
-            <span>🦁</span>
-        }
-        @if(this.current_progress >= 60 && this.current_progress < 80){   
-            <span>🐢</span>
-        }
-        @if(this.current_progress >= 80){
-            <span>🦖</span>
+        @if(this.emojiSettings){
+            @if(this.current_progress < 20){
+                <span>🐣</span>
+            }
+            @if(this.current_progress >= 20 && this.current_progress < 40){
+                <span>🐒</span>
+            } 
+            @if(this.current_progress >= 40 && this.current_progress < 60){ 
+                <span>🦁</span>
+            }
+            @if(this.current_progress >= 60 && this.current_progress < 80){   
+                <span>🐢</span>
+            }
+            @if(this.current_progress >= 80){
+                <span>🦖</span>
+            }
+        }@else {
+            <span>{{this.current_progress}} %</span>
         }
              
                 

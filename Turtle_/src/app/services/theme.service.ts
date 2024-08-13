@@ -7,7 +7,13 @@ import { mono_theme_colors } from '../../assets/global_cases'
 })
 export class ThemeService {
   private current_style_global = new BehaviorSubject<string>('mono');
+  
+  private enableEmoji:boolean = false;
+  private enable_emoji_progress_bar = new BehaviorSubject<boolean>(this.enableEmoji);
+  
   currentStyle = this.current_style_global.asObservable();
+  emoji_progress_bar = this.enable_emoji_progress_bar.asObservable();
+
   constructor(
    
   ) { }
@@ -17,10 +23,13 @@ export class ThemeService {
     this.current_style_global.error("style isn't set")
   }
 
+  offOnEmojiProgressBar(enabled: boolean){
+    this.enable_emoji_progress_bar.next(enabled);
+    this.enable_emoji_progress_bar.error("oh no... we can not change this now (:");
+  }
+
   blueStyleOfProgressBar(e?: { target?: any; }){
     let target = e?.target;
-    console.log("e: ", e);
-    console.log("target:", target);
     // if (current_progress < 20) {
     //   target.style.background = 'linear-gradient(180deg, #66FBDB 36%, #3D9582 100%)';
     // } else if (current_progress >= 20 && current_progress < 40) {

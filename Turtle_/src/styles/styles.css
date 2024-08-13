@@ -8,3 +8,10 @@
     without the need for any additional import or 
     reference within the component.
 */
+@font-face {
+    font-family: 'Jost-regular';
+    src: url(../../../assets/Jost-VariableFont_wght.ttf);
+}
+body{
+    font-family: 'Jost-regular'
+}
