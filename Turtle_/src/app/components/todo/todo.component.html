@@ -1,1 +1,28 @@
-<p>todo works!</p>
+<div class="container">
+    <div class="body">
+      <div class="todo_" id="todo">
+        <div class="header_todo">
+          <h5>just f.. do it</h5>
+        </div>
+        <ul (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="removeDragOver($event)">
+          <li id="item1" draggable="true" (dragstart)="drag($event)">Item 1</li>
+        </ul>
+      </div>
+      <div class="todo_" id="inprogress" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="removeDragOver($event)">
+        <div class="header_todo">
+          <h5>..in progress</h5>
+        </div>
+        <ul>
+          <li id="item2" draggable="true" (dragstart)="drag($event)">Item 2</li>
+        </ul>
+      </div>
+      <div class="todo_" id="done" (drop)="drop($event)" (dragover)="allowDrop($event)" (dragleave)="removeDragOver($event)">
+        <div class="header_todo">
+          <h5>good job kiddo</h5>
+        </div>
+        <ul>
+          <li id="item3" draggable="true" (dragstart)="drag($event)">Item 3</li>
+        </ul>
+      </div>
+    </div>
+  </div>

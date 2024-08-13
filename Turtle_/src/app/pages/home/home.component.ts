@@ -8,10 +8,11 @@ import { PomodoroTimerComponent } from "../../components/pomodoro-timer/pomodoro
 import { HabitTrackerComponent } from "../../components/habit-tracker/habit-tracker.component";
 import { GoalComponent } from "../../components/goal/goal.component";
 import { NoteComponent } from '../../components/note/note.component';
+import { TodoComponent } from "../../components/todo/todo.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent, HabitTrackerComponent, GoalComponent, NoteComponent],
+  imports: [CommonModule, ProgressBarComponent, HeaderComponent, PomodoroTimerComponent, HabitTrackerComponent, GoalComponent, NoteComponent, TodoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   encapsulation: ViewEncapsulation.None

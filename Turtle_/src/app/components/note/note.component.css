@@ -28,7 +28,7 @@
       font-size:14px;
       resize:none;
       line-height:3rem;
-      padding:  24 18px;
+      padding:  24px 18px;
       background-color: #333;
       background-repeat:repeat-y, repeat;
       -webkit-border-radius:12px;
@@ -49,9 +49,7 @@
   #button {
       cursor:pointer;
       padding: 4px 8px;
-     
   }
- 
   #wrapper {
       width:400px;
       height:auto;
