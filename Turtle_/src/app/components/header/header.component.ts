@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [HttpClientModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}

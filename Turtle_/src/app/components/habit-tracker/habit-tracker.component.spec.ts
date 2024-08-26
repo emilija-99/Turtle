@@ -8,10 +8,9 @@ describe('HabitTrackerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HabitTrackerComponent]
-    })
-    .compileComponents();
-    
+      imports: [HabitTrackerComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(HabitTrackerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

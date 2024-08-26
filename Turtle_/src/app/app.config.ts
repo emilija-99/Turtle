@@ -5,11 +5,10 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 
-
 export const appConfig: ApplicationConfig = {
-  providers:[provideRouter(routes), provideHttpClient()]
+  providers: [provideRouter(routes), provideHttpClient()],
 };
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:5000'
+  apiBaseUrl: 'http://localhost:5000',
 };

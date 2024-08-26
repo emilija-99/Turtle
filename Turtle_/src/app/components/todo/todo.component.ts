@@ -6,10 +6,9 @@ import { LoggerService } from '../../../assets/logger.service';
   standalone: true,
   imports: [],
   templateUrl: './todo.component.html',
-  styleUrl: './todo.component.css'
+  styleUrl: './todo.component.css',
 })
 export class TodoComponent {
-
   allowDrop(ev: DragEvent): void {
     ev.preventDefault();
   }
@@ -38,5 +37,4 @@ export class TodoComponent {
     const dropTarget = ev.target as HTMLElement;
     dropTarget.closest('ul')?.classList.remove('drag-over');
   }
-  
 }

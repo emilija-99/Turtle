@@ -1,11 +1,9 @@
 @font-face {
-  font-family: 'Jost-regular';
+  font-family: "Jost-regular";
   src: url(/assets/Jost-VariableFont_wght.ttf);
 }
 
-  
-  app-header  {
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto;
-  }
-  
+app-header {
+  max-width: 1200px; /* Adjust as needed */
+  margin: 0 auto;
+}

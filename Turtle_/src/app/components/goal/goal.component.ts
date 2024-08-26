@@ -5,8 +5,8 @@ import { Component, Input, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './goal.component.html',
-  styleUrl: './goal.component.css'
+  styleUrl: './goal.component.css',
 })
 export class GoalComponent {
-  @Input({required:true}) habit_name: string | undefined;
+  @Input({ required: true }) habit_name: string | undefined;
 }

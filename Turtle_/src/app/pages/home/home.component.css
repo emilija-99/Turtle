@@ -1,7 +1,7 @@
 @font-face {
-    font-family: 'Jost-regular';
-    src: url(../../../assets/Jost-VariableFont_wght.ttf);
+  font-family: "Jost-regular";
+  src: url(../../../assets/Jost-VariableFont_wght.ttf);
 }
-body{
-    font-family: 'Jost-regular'
+body {
+  font-family: "Jost-regular";
 }
