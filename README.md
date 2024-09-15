@@ -26,30 +26,14 @@
 
 
 
-[Desing File in Figma]([https://www.figma.com/file/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?type=design&mode=design&t=9vlll7lhA7RBiyTs-1](https://www.figma.com/community/file/1341065958356170066/turtle))
+[View the Turtle App Design on Figma](https://www.figma.com/file/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?type=design&mode=design&t=9vlll7lhA7RBiyTs-1](https://www.figma.com/community/file/1341065958356170066/turtle)](https://www.figma.com/design/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?node-id=37-10&t=dxheA2hNak5OC9kk-1))
 
-<picture>
-  <img alt="progress_bar" src="assets/Screenshot from 2024-08-13 20-06-18.png">
-</picture>
-<br>
-<picture>
-    <img src="assets/Screenshot from 2024-08-13 20-22-15.png">
-</picture>
-<br>
-<picture>
-    <img src="assets/Screenshot from 2024-08-13 20-25-18.png">
-</picture>
-<br>
-<picture>
-    <img src="assets/Screenshot from 2024-08-13 20-25-52.png">
-</picture>
-<br>
-<picture>
-    <img src="assets/Screenshot from 2024-08-13 20-27-22.png">
-</picture>
-<br>
-<picture>
+<div style="display: flex; flex-direction: column;">
+    <img alt="progress_bar" src="assets/Screenshot from 2024-08-13 20-06-18.png"  style="width: 30%;">
+    <img src="assets/Screenshot from 2024-08-13 20-22-15.png"  style="width: 30%;">
+    <img src="assets/Screenshot from 2024-08-13 20-25-18.png" style="width: 30%;">
+    <img src="assets/Screenshot from 2024-08-13 20-25-52.png" style="width: 30%;">
+    <img src="assets/Screenshot from 2024-08-13 20-27-22.png" style="width: 30%;">
     <img src="assets/Screenshot from 2024-08-13 20-27-36.png">
-</picture>
-
+</div>
 
