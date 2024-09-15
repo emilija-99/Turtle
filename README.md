@@ -26,7 +26,7 @@
 
 
 
-[Desing File in Figma](https://www.figma.com/file/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?type=design&mode=design&t=9vlll7lhA7RBiyTs-1)
+[Desing File in Figma]([https://www.figma.com/file/lTw2G5mz3oN4ZysNtyBPuJ/Turtle?type=design&mode=design&t=9vlll7lhA7RBiyTs-1](https://www.figma.com/community/file/1341065958356170066/turtle))
 
 <picture>
   <img alt="progress_bar" src="assets/Screenshot from 2024-08-13 20-06-18.png">
