@@ -8,6 +8,7 @@ import { title } from '../assets/global_cases';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { CommonModule } from '@angular/common';
+import { WelcomeComponent } from "./pages/welcome/welcome.component";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { CommonModule } from '@angular/common';
     HabitTrackerComponent,
     HomeComponent,
     HeaderComponent,
-  ],
+    WelcomeComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   host: { ngSkipHydration: 'true' },

@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Jost';
+    src: url('/assets/fonts/Jost-VariableFont_wght.woff2') format('woff2'),
+    url('/assets/fonts/Jost-VariableFont_wght.woff') format('woff'),
+    url('/assets/fonts/Jost-VariableFont_wght.ttf') format('truetype');
+    font-display: swap;
+}
+  
+  body, html {
+    font-family: 'Jost', sans-serif !important;;
+    background-color: #000;
+  }
+  
