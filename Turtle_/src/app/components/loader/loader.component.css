@@ -1,0 +1,67 @@
+.loader-container {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.695); 
+    backdrop-filter: blur(10px);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+.track {
+    width: 20%;
+    height: 20px;
+    border-radius: 25px;
+    position: relative;
+    display: flex;
+    rotate: revert-layer;
+}
+.finish-line {
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.turtle {
+    animation: moveTurtle 1s linear infinite;
+    padding: 15px;
+    position: absolute;
+    font-size: 4rem;
+    transform: scaleX(-1);
+    bottom: -85px;
+}
+
+.turtle:nth-child(1) {
+    right:35px;
+    animation-delay: 0.6s;
+    margin:25px;
+}
+.turtle:nth-child(2) {
+    top:65px;
+    animation-delay: 0.7s;
+}
+.turtle:nth-child(3) {
+    top:5px;
+    animation-delay: 1.6s;
+}
+@keyframes moveTurtle {
+    0% {
+        left: 0;
+    }
+    25%{
+        left: 25%;
+    }
+    50%{
+        left: 50%
+    }
+    75%{
+        left: 75%;
+    }   
+    100% {
+        left: 99%;
+    }
+}

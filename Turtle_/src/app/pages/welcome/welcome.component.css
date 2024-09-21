@@ -41,8 +41,8 @@ p{
 button{
     text-align: end;
     float: right;
-    background-color: #8AB753;
-    color: #EAEAEA;
+    background-color: #C4DBA9;
+    color: #3B1B1B;
     padding: 4px 10px 4px 10px;
     border-radius: 16px;
     border: none;
@@ -53,6 +53,7 @@ button{
     display: grid;
     place-items: center; 
     height: 100vh;
+    animation: zoomIn 1s ease forwards;  
 }
 
 .logo-container{
@@ -61,7 +62,7 @@ button{
     flex-wrap: wrap;
     align-content: space-around;
     justify-content: center;
-    align-items: center;    
+    align-items: center;  
 }
 
 span{
