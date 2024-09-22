@@ -47,6 +47,26 @@ button{
     border-radius: 16px;
     border: none;
     font-size: 11px;
+    cursor: pointer;
+    position: relative;
+}
+.redirect:hover{
+    background-color: #1E1E1E;
+    color: #EAEAEA;
+    font-weight: 600;
+    border: 3px solid #8AB753;
+    transition: all .3s;
+    content:attr(data-content)
+    /* content: attr(data-hover); */
+}
+.redirect::before {
+    content: attr(data-content); 
+    transition: opacity 0.3s; /* Fade effect */
+}
+
+.redirect:hover::before {
+    content: attr(data-hover); /* Change content on hover */
+    opacity: 1; /* Show the text on hover */
 }
 
 .container{

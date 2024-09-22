@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoaderComponent } from "../../components/loader/loader.component";
 import { Subscriber, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -15,6 +16,10 @@ export class WelcomeComponent implements OnInit, AfterViewInit{
   private loaderClear:ReturnType<typeof setTimeout> | undefined;
  
 
+  public constructor(
+    private router: Router,
+  ){}
+
   ngAfterViewInit(): void {
     console.log("ready!");
     this.loaderClear = setTimeout(() => {
@@ -26,8 +31,13 @@ export class WelcomeComponent implements OnInit, AfterViewInit{
   }
  
   ngOnInit(): void {
-   
     if(this.loaderClear) clearTimeout(this.loaderClear)
+  }
+
+  public toHomePage():void{
+    var btn_text = document.getElementsByClassName('redirect');
+    console.log("btn.text");
+    this.router.navigate(['home']);
   }
 
   
