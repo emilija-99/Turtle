@@ -2,6 +2,36 @@
   font-family: "Jost-regular";
   src: url(../../../assets/Jost-VariableFont_wght.ttf);
 }
-body {
-  font-family: "Jost-regular";
+* {
+  margin: 0;
+  overflow: hidden;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 180px auto 180px; 
+  gap: 0px; 
+  height: 100vh;
+}
+
+.column {
+  background-color: #f0f0f0; 
+  padding: 20px; 
+  border: 1px solid #ccc; 
+}
+
+.first {
+  background-color: #e0e0e0; 
+}
+
+.middle {
+  background-color: #c0c0c0;
+}
+
+.last {
+  background-color: #e0e0e0; 
+}
+@media (max-width: 600px) {
+  .grid-container {
+      grid-template-columns: 1fr; 
+  }
 }
