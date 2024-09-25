@@ -8,27 +8,33 @@
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 180px auto 180px; 
+  grid-template-columns: 280px auto 180px; 
   gap: 0px; 
   height: 100vh;
 }
 
 .column {
   background-color: #f0f0f0; 
-  padding: 20px; 
-  border: 1px solid #ccc; 
+  padding: 10px; 
 }
 
 .first {
-  background-color: #e0e0e0; 
+  background-color: #00000068; 
 }
 
 .middle {
-  background-color: #c0c0c0;
+  background-color: #FFFFFF;
 }
 
 .last {
-  background-color: #e0e0e0; 
+  background-color: #e1e2e2
+  
+}
+img{
+  width: 60px;
+  margin-left: 90px;
+  margin-top:50px;
+  margin-bottom: 20px;
 }
 @media (max-width: 600px) {
   .grid-container {

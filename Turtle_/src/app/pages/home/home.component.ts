@@ -9,6 +9,7 @@ import { HabitTrackerComponent } from '../../components/habit-tracker/habit-trac
 import { GoalComponent } from '../../components/goal/goal.component';
 import { NoteComponent } from '../../components/note/note.component';
 import { TodoComponent } from '../../components/todo/todo.component';
+import { HabitsComponent } from '../habits/habits.component';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,6 +22,7 @@ import { TodoComponent } from '../../components/todo/todo.component';
     GoalComponent,
     NoteComponent,
     TodoComponent,
+    HabitsComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
