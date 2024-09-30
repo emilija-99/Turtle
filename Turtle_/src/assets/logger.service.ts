@@ -6,7 +6,7 @@ import { LogLevel } from './loglevel.model';
 export class LoggerService {
   logLevel: LogLevel = new LogLevel();
 constructor() {}
-info(msg: string, response: string): void {
+info(msg: string, response?: string): void {
     this.logWith(this.logLevel.Info, msg);
   }
 warn(msg: string): void {

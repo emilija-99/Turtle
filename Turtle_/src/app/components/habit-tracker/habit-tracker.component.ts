@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { habit_tracker_object, matrixObj } from '../../../assets/models';
 import { HttpClientModule } from '@angular/common/http';
+import { HabitsServiceService } from './habits-service.service';
+import { LoggerService } from '../../../assets/logger.service';
 
 @Component({
   selector: 'app-habit-tracker',
@@ -42,7 +44,11 @@ export class HabitTrackerComponent
     Dec: 31,
   };
 
-  constructor() {}
+  constructor(
+    public habit_service: HabitsServiceService,
+    public log:LoggerService
+  ) {}
+
   ngAfterContentInit(): void {
     console.log('ngAfter: ');
   }
@@ -56,6 +62,9 @@ export class HabitTrackerComponent
   }
 
   ngOnInit(): void {
+
+    this.habit_service.getAllHabits();
+    console.log("this.habit.", this.habit_service.allHabitsData);
     console.log('init.');
 
     if (this.habit_id) {
