@@ -22,6 +22,24 @@ def getAllHabits():
 
     habits_list = [dict(habit) for habit in habitsAll]
 
+    return jsonify(habits_list);
+
+@app.route('/api/createHabit', methods=['POST'])
+@cross_origin()
+def createNewHabit():
+    conn = db_conn()
+    new_habit = request.json
+
+    name = new_habit['name']
+    date =  date();
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM HABIT_A")
+    habitsAll = cur.fetchall()
+    conn.close()
+
+    habits_list = [dict(habit) for habit in habitsAll]
+
     return jsonify(habits_list)
 if __name__ == '__main__':
     app.run(debug=True)
