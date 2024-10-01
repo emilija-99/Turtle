@@ -19,133 +19,101 @@ import { LoggerService } from '../../../assets/logger.service';
   styleUrls: ['./habit-tracker.component.css'],
   standalone: true,
 })
-export class HabitTrackerComponent
-  implements OnInit, OnChanges, AfterContentInit
-{
+/*
+  This component use to make instance of object:
+    - make component
+ */
+export class HabitTrackerComponent implements OnInit, OnChanges {
   @Input({ required: true }) habit_id!: number;
   @Input({ required: true }) habit_name!: string;
+  @Input({ required: true }) creation_date!: string;
+
   // @Input({required:true}) creation_date!:string;
   private date: Date = new Date();
   private days?: any;
   private habitTrackerList: any[] = [];
   protected matrix!: habit_tracker_object;
-  private months: {} = {
-    Jan: 31,
-    Feb: 28,
-    Marth: 31,
-    April: 30,
-    May: 31,
-    Jun: 30,
-    July: 31,
-    Avg: 31,
-    Sept: 30,
-    Okt: 31,
-    Nov: 30,
-    Dec: 31,
-  };
 
   constructor(
     public habit_service: HabitsServiceService,
-    public log:LoggerService
+    public log: LoggerService,
   ) {}
-
-  ngAfterContentInit(): void {
-    console.log('ngAfter: ');
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('Changes:', changes);
-
-    if (changes['habit_id'].currentValue) {
-      this.setDaysForMonth();
-    }
   }
 
   ngOnInit(): void {
+    // console.log('this.habit.', this.habit_service.allHabitsData);
+    this.log.info('ngOnInit:');
+    this.log.info(
+      `@input: habit name, ${this.habit_name}, ${this.habit_id}, ${this.creation_date}`,
+    );
 
-    this.habit_service.getAllHabits();
-    console.log("this.habit.", this.habit_service.allHabitsData);
-    console.log('init.');
-
-    if (this.habit_id) {
-      var rows = this.days[1] / 7;
-      var columns = 7;
-      rows = Math.round(rows) + 1;
-      this.matrix = this.setHabitTrackerMatrix(columns, rows);
-      console.log('mat: ', this.matrix);
-      // this.setDaysForMonth();
-    }
+    // if (this.habit_id) {
+    //   let rows = this.days[1] / 7;
+    //   const columns = 7;
+    //   rows = Math.round(rows) + 1;
+    //   this.matrix = this.setHabitTrackerMatrix(columns, rows);
+    //   console.log('mat: ', this.matrix);
+    //   // this.setDaysForMonth();
+    // }
   }
 
   setDaysForMonth(): void {
-    var current_month = this.date.getMonth();
-    this.days = Object.entries(this.months)[current_month];
-    console.log('days:', this.days);
-    // this.createCanvas(this.habit_name, this.habit_id);
+    this.createCanvas(this.habit_name, this.habit_id);
   }
 
-  //   createCanvas(habit_name:string, habitId: number) {
-  //     console.log("days,", habit_name, habitId);
-  //     if (typeof document !== 'undefined') {
+  createCanvas(habit_name: string, habitId: number) {
+    if (typeof document !== 'undefined') {
+      let daysGrid = document.getElementById(`days-${habitId}`) as HTMLElement;
+      if (!daysGrid) {
+        // If it doesn't exist, create it
+        daysGrid = document.createElement('div');
+        daysGrid.id = `days-${habitId}`;
+        daysGrid.classList.add('days-grid');
 
-  //       console.log("createCanvas if");
-  //       let daysGrid = document.getElementById(`days-${habitId}`) as HTMLElement;
-  //       console.log(daysGrid);
-  //       if (!daysGrid) {
-  //         // If it doesn't exist, create it
-  //         daysGrid = document.createElement('div');
-  //         daysGrid.id = `days-${habitId}`;
-  //         daysGrid.classList.add('days-grid');
+        const container = document.querySelectorAll('.container');
+        container[container.length - 1].appendChild(daysGrid);
+      }
 
-  //         let container = document.querySelectorAll('.container');
-  //         container[container.length-1].appendChild(daysGrid);
+      let rows = this.days[1] / 7;
+      const columns = 7;
+      console.log('rows, columns', rows, columns);
+      rows = Math.round(rows) + 1;
+      const mat = this.setHabitTrackerMatrix(columns, rows);
+      console.log('mat', mat);
 
-  //       }
-  //         var rows = (this.days[1] / 7);
-  //         var columns = 7;
-  //         console.log('rows, columns', rows, columns);
-  //         rows = Math.round(rows)+1;
-  //         let mat = this.setHabitTrackerMatrix(columns, rows);
-  //         console.log("mat", mat);
+      for (let i = 0; i < rows; i++) {
+        const rowContainer = document.createElement('div');
+        rowContainer.style.paddingLeft = '1px';
+        rowContainer.style.display = 'flex';
 
-  //         for (let i = 0; i < rows; i++) {
-  //           const rowContainer = document.createElement('div');
-  //           rowContainer.style.paddingLeft = '1px';
-  //           rowContainer.style.display = 'flex';
+        rowContainer.classList.add('row');
 
-  //           rowContainer.classList.add('row');
-
-  //           for (let j = 0; j < columns; j++) {
-  //             const square = document.createElement('div');
-  //             square.style.backgroundColor = '#d2d2d2';
-  //             square.style.width = '10px';
-  //             square.style.height = '10px';
-  //             square.style.margin = '2px 1px';
-  //             square.style.borderRadius = '1.5px';
-  //             square.style.boxShadow = '-1px 4px 2px -3px rgba(0,0,0,0.63) inset';
-  //             square.classList.add('square');
-  //             rowContainer.appendChild(square);
-  //           }
-  //           daysGrid.appendChild(rowContainer);
-  //         }
-  //         daysGrid.addEventListener('click',()=>{
-  //           mat.matrix[1][0].checked = !mat.matrix[1][0].checked;
-  //           if(mat.matrix[1][0].checked){
-  //             const row = daysGrid.querySelectorAll('.row')[1];
-  //             const column = row.querySelectorAll('.square')[0];
-
-  //             // column.style.backgroundColor = 'green';
-  //            // document.querySelectorAll('#days-1')[0].querySelectorAll('.row')[1].querySelectorAll('.square')[0].style.backgroundColor = 'green'
-  //             console.log("column", column);
-  //            console.log('row',row);
-  //             console.log('row.querySelectorAll(square).length',row.querySelectorAll('.square').length);
-  //             console.log('ma',daysGrid);
-  //           }
-  //         })
-  //         this.habitTrackerList.push(mat);
-  //       }
-
-  // }
+        for (let j = 0; j < columns; j++) {
+          const square = document.createElement('div');
+          square.style.backgroundColor = '#d2d2d2';
+          square.style.width = '10px';
+          square.style.height = '10px';
+          square.style.margin = '2px 1px';
+          square.style.borderRadius = '1.5px';
+          square.style.boxShadow = '-1px 4px 2px -3px rgba(0,0,0,0.63) inset';
+          square.classList.add('square');
+          rowContainer.appendChild(square);
+        }
+        daysGrid.appendChild(rowContainer);
+      }
+      daysGrid.addEventListener('click', () => {
+        mat.matrix[1][0].checked = !mat.matrix[1][0].checked;
+        if (mat.matrix[1][0].checked) {
+          const row = daysGrid.querySelectorAll('.row')[1];
+          const column = row.querySelectorAll('.square')[0];
+        }
+      });
+      this.habitTrackerList.push(mat);
+    }
+  }
 
   setHabitTrackerMatrix(columns: any, rows: any): habit_tracker_object {
     console.log('column, rows', columns, rows);

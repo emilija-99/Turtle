@@ -16,6 +16,7 @@ import { EventEmitter } from 'node:stream';
 import { HabitObject } from './habit';
 import { HabitService } from './../../services/habit.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HabitsServiceService } from '../../components/habit-tracker/habits-service.service';
 
 @Component({
   selector: 'app-habits',
@@ -27,27 +28,30 @@ import { HttpClientModule } from '@angular/common/http';
 export class HabitsComponent implements OnInit, OnChanges {
   @ViewChild('habitTrackerContainer', { read: ViewContainerRef })
   habitTrackerContainer!: ViewContainerRef;
-  public ID: number = 0;
+
+  public ID: number = -1;
   public habit_name: any = 'habit';
   public habitsNames: HabitObject[] = [];
+
   // @Output() habitNameChange = new EventEmitter<string>();
 
-  public habitName: any;
+  public habitName: any = undefined;
+
   public visibleInput: boolean = true;
   private habits_tracker_obj: HabitObject[] = [];
 
   constructor(
     private resolver: ComponentFactoryResolver,
-    private habitService: HabitService,
+    private habitService: HabitsServiceService,
   ) {}
+
   ngOnInit(): void {
     this.getAllHabits();
-    console.log('Item.');
-    this.inputChange();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('Changes:', changes);
+    this.inputChange();
   }
 
   inputChange(): void {
@@ -58,41 +62,33 @@ export class HabitsComponent implements OnInit, OnChanges {
   }
 
   getAllHabits() {
-    this.habitService.getAllHabits().subscribe({
-      next: (response) => {
-        console.log('HabitService response: ', response);
-        if (response) this.habits_tracker_obj = response;
-      },
-      complete: () => {},
-      error: (error) => {
-        console.error('getAllHabits error response: ', error);
-      },
-    });
+    this.habitService.getAllHabits();
   }
 
   addNewHabit(habitName: string) {
-    console.log('habitName reseved: ', habitName);
+    this.habitService.createNewHabit(habitName);
 
-    var newHabitObject = new HabitObject();
-    newHabitObject.habit_id = ++this.ID;
-    newHabitObject.habit_name = habitName;
-    newHabitObject.creation_date = new Date().toISOString();
+    const factory = this.resolver.resolveComponentFactory(
+      HabitTrackerComponent,
+    );
+    const componentRef = this.habitTrackerContainer.createComponent(factory);
 
-    console.log('newHabitObject: ', newHabitObject);
+    this.habitService.getNewHabit().subscribe((habit) => {
+      if (componentRef && habit) {
+        componentRef.instance.habit_name = habit['habit_name'];
+        componentRef.instance.habit_id = habit['id'];
+        componentRef.instance.creation_date = habit['creation_date'];
+      }
+    });
 
-    console.log('habitTrackerContainer', this.habitTrackerContainer);
     if (habitName && this.habitTrackerContainer) {
       const factory = this.resolver.resolveComponentFactory(
         HabitTrackerComponent,
       );
-      const componentRef = this.habitTrackerContainer.createComponent(factory);
-      componentRef.instance.habit_name = newHabitObject.habit_name;
-      componentRef.instance.habit_id = newHabitObject.habit_id;
-      // componentRef.instance.creation_date = newHabitObject.creation_date.toString();
 
-      this.habitName = '';
+      // this.habitName = '';
       console.log('componentRed: ', componentRef);
-      // document.getElementById('habitTrackerContainer')?
+      // document.getElementById('habitTrackerContainer');
     } else {
       console.log('we do not have this instance of component :).');
     }
