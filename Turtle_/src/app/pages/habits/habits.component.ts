@@ -74,23 +74,18 @@ export class HabitsComponent implements OnInit, OnChanges {
     const componentRef = this.habitTrackerContainer.createComponent(factory);
 
     this.habitService.getNewHabit().subscribe((habit) => {
-      if (componentRef && habit) {
+      if(habit) {
         componentRef.instance.habit_name = habit['habit_name'];
         componentRef.instance.habit_id = habit['id'];
         componentRef.instance.creation_date = habit['creation_date'];
+        componentRef.changeDetectorRef.detectChanges();
       }
     });
 
     if (habitName && this.habitTrackerContainer) {
-      const factory = this.resolver.resolveComponentFactory(
-        HabitTrackerComponent,
-      );
-
-      // this.habitName = '';
-      console.log('componentRed: ', componentRef);
-      // document.getElementById('habitTrackerContainer');
+      console.log('Component Reference: ', componentRef);
     } else {
-      console.log('we do not have this instance of component :).');
+      console.log('We do not have this instance of component.');
     }
   }
 }

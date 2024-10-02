@@ -5,11 +5,11 @@
 .days {
   display: flex;
   flex-direction: row;
-  font-size: 16px;
+  font-size: 11px;
 }
 .gridcontainer {
   border-radius: 6px;
-  width: fit-content;
+  width: min-content;
   padding: 3px 5px;
   background-color: #2f2f2f;
   font-size: 6px;
@@ -52,3 +52,21 @@
 .square:active {
   background-color: #7cb841;
 }
+.checked-true {
+  background-color: green;
+}
+
+.checked-disabled {
+  background-color: lightgray;
+  pointer-events: none;
+}
+.checked-false {
+  backdrop-filter: grey;
+  pointer-events: pointer;
+  display: block;
+}
+
+.checked-none{
+  display: none;
+}
+
