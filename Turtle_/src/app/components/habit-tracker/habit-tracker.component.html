@@ -8,7 +8,7 @@
         @for (row of matrix.matrix; track row) {
           <div class="row">
             @for (cell of row; track cell) {
-              <div
+              <button
                 class="square"
                 [ngClass]="{
                   'checked-true': cell.checked === true,
@@ -16,10 +16,10 @@
                   'checked-false': cell.checked === false,
                   'checked-none': cell.day === -1,
                 }"
-                (click)="setChecked(cell.checked)"
+                (click)="setChecked($event,{habit_id, matrix})"
               >
                 {{ cell.day !== -1 ? cell.day : "" }}
-              </div>
+              </button>
             }
           </div>
         }

@@ -68,6 +68,7 @@ export class HabitsComponent implements OnInit, OnChanges {
   addNewHabit(habitName: string) {
     this.habitService.createNewHabit(habitName);
 
+
     const factory = this.resolver.resolveComponentFactory(
       HabitTrackerComponent,
     );

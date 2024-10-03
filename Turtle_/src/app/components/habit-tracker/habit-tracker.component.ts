@@ -1,12 +1,16 @@
 import {
   AfterContentInit,
-  Component,
+  Component, EventEmitter,
   Input,
   OnChanges,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import {CheckedState, habit_tracker_object, matrixObj} from '../../../assets/models';
+import {
+  CheckedState,
+  habit_tracker_object,
+  matrixObj,
+} from '../../../assets/models';
 import { HttpClientModule } from '@angular/common/http';
 import { HabitsServiceService } from './habits-service.service';
 import { LoggerService } from '../../../assets/logger.service';
@@ -217,11 +221,22 @@ export class HabitTrackerComponent
     return matrix;
   }
 
-  setChecked(cell: CheckedState) {
-    if(cell === true ){
-      return false;
-    } else {
-      return true;
+  dayInMatrix(matrix: matrixObj[][], targetDay: number) {
+    for (let i = 0; i < matrix.length; i++) {
+      const found = matrix[i].find(cell => cell.day === targetDay);
+      if (found) {
+        return { row: i, cell: found }; // Return the row index and the found cell
+      }
     }
+    return null; // Return null if not found
+  }
+
+  setChecked(
+    $event: MouseEvent,
+    cell: { habit_id: number; matrix: habit_tracker_object },
+  ) {
+    const target = $event.target as HTMLElement;
+    const targetClicked = target.childNodes[0].textContent;
+    console.log(this.dayInMatrix(cell.matrix.matrix,Number(targetClicked)));
   }
 }
